@@ -1,4 +1,4 @@
-# _DOM create, read, edit, destroy_
+# _DOM create, read, update, destroy_
 ## _1/31/17_
 ### by [Charles Moss](https://twitter.com/CharlesMoss)
 
@@ -15,10 +15,6 @@ _A web page that can create via text input field a list of displayed text posts.
 
 ## Setup
 Clone this repo and open the index.html file in your browsers
-
-```
-
-```
 
 ## Technologies Used
 

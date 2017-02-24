@@ -45,7 +45,7 @@ function ProcessText(str) {
   this.charSplt = str.split('')
   this.wordCount = this.text.length === 0 ? 0 : this.words.length
   this.time = timeStamp()
-  this.textInfo = () => `<p> word count : ${this.wordCount} // character count : ${this.text.length}</p>`
+  this.textInfo = () => `<p>word count : ${this.wordCount} // character count : ${this.text.length}</p>`
   this.textOut = () => `<li class="posts__item">${this.text}<span class="post__timestamp">${this.time}</span><span class="post__edit">✎</span><span class="post__remove">x</span></li>`
   this.textEdited = () => `<li class="posts__item">${this.text}<span class="post__timestamp">edited ${this.time}</span><span class="post__edit">✎</span><span class="post__remove">x</span></li>`
 }
