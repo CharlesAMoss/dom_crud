@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>DOM CRUD</title>
+
+    <link href="css/main.css" rel="stylesheet">
+
+  </head>
+  <body>
+
+    <div class="wrapper">
+
+        <form id="entryForm" name="textbox">
+
+          <textarea id="inputText" name="textarea" rows="10" cols="50" placeholder="input text" ></textarea>
+          <div id="infoOut">
+            <p> word count : 0 // character count : 0 </p>
+          </div>
+          <input type="button" value="post" id="postBtn" class="form__btn">
+          <input type="button" value="clear" id="clear" class="form__btn">
+
+        </form>
+
+        <div class="posts">
+          <ul id="postOut" class="posts__list" ></ul>
+        </div>
+
+    </div>
+
+    <script src="js/main.js" type="text/javascript" ></script>
+  </body>
+</html>
