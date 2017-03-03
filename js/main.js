@@ -1,7 +1,7 @@
 console.log('hello') // sanity checker
 
 const formText = document.querySelector('#inputText')
-const clear = document.querySelector('#clear')
+const clear = document.querySelector('#clearBtn')
 const post = document.querySelector('#postBtn')
 const postList = document.querySelector('#postOut')
 
