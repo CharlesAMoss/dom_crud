@@ -5,9 +5,7 @@ const clear = document.querySelector('#clearBtn')
 const post = document.querySelector('#postBtn')
 const postList = document.querySelector('#postOut')
 
-
 const defaultOut = `<p> word count : 0 // character count : 0 </p>`
-
 
 function wordSpilt(str) {
   str = str.replace(/[.,\/#!$%\^&\*;:{}=`~()\"]/g,'')
@@ -27,13 +25,21 @@ function timeStamp() {
   let hours = now.getHours()
 	let minutes = now.getMinutes()
   let meridiem = hours > 12 ? "pm" : "am"
-
   if (hours === 0) hours = 12
   if (hours > 12) hours = hours - 12
 	if (hours < 10) hours = `&nbsp;${hours}`
 	if (minutes < 10) minutes = `0${minutes}`
-
   return `${hours}:${minutes} ${meridiem}`
+}
+
+function focusEdit(node) {
+  const range = document.createRange()
+  const sel = window.getSelection()
+  range.setStart(node.childNodes[0], 1)
+  range.collapse(true)
+  sel.removeAllRanges()
+  sel.addRange(range)
+  return node.focus()
 }
 
 function extract(node) {
@@ -54,9 +60,9 @@ function ProcessText(str) {
 
   this.textOut = () => `<li class="posts__item">${this.text}<span class="post__timestamp">${this.time}</span><span class="post__edit">✎</span><span class="post__remove">x</span></li>`
 
-  this.textEdited = () => `<li class="posts__item">${this.text}<span class="post__timestamp">edited ${this.time}</span><span class="post__edit">✎</span><span class="post__remove">x</span></li>`
+  this.textEditing = () => `<li id="forEdit" class="posts__item" contenteditable="true">\u200B${this.text}\u00A0\u00A0\u00A0${this.interface}</li>`
 
-  this.textEditing = () => `<li id="forEdit" class="posts__item" contenteditable="true">\u00A0${this.text}\u00A0\u00A0\u00A0${this.interface}</li>`
+  this.textEdited = () => `<li class="posts__item">${this.text}<span class="post__timestamp">edited ${this.time}</span><span class="post__edit">✎</span><span class="post__remove">x</span></li>`
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -101,19 +107,12 @@ document.addEventListener('DOMContentLoaded', function() {
         postArr.splice(postindex, 1, info.textEditing())
         postList.innerHTML = postArr.join(``)
         const forEdit = document.getElementById('forEdit')
-        const range = document.createRange()
-        const sel = window.getSelection()
-        range.setStart(forEdit.childNodes[0], 1)
-        range.collapse(true)
-        sel.removeAllRanges()
-        sel.addRange(range)
-        forEdit.focus()
+        focusEdit(forEdit)
 
         forEdit.lastElementChild.previousElementSibling.addEventListener('click', function() {
           info.text = extract(forEdit)
           postArr.splice(postindex, 1, info.textEdited())
           postList.innerHTML = postArr.join(``)
-          console.log(forEdit.childNodes[0])
           formText.focus()
         })
       })
