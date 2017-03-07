@@ -29,4 +29,15 @@ The text area will be reset as with word and character counts, focus will be set
 
 4. Reenter the text: "I'm happy, even on rainy days" then click the "post" button.(take note of time of the post)
 ##expected result
-A "post" will be created below the buttons and will display: "I'm happy, even on rainy days" and a timestamp.
+A "post" will be created below the buttons and will display: "I'm happy, even on rainy days" with a timestamp.
+
+5. Click on the post "I'm happy, even on rainy days".
+##expected result
+The edit ('✎') and delete ('x') buttons will be revealed.
+
+6. Click the edit ('✎') button will enable "editing" mode.
+##expected result
+Post will be editable (ability to add and delete text), and ('✎') button will change to ('✓').
+
+7. With the "I'm happy, even on rainy days" post in "editing" mode, edit the post by replacing "days" with "nights" and click confirm ('✓') button.
+##expected result
